@@ -23,38 +23,21 @@ export default function App() {
     fetchData(USER_API);
   }, []);
 
-  const array = [
-    "red",
-    "green",
-    "blue",
-    "yellow",
-    "orange",
-    "red",
-    "green",
-    "blue",
-    "yellow",
-    "orange",
-    "red",
-    "yellow",
-    "orange",
-    "green",
-    "blue",
-    "orange",
-    "red",
-  ];
+  const array = ["red", "green", "blue", "yellow", "orange"];
 
   return (
     <div className="App">
       <div>
         {" "}
         {data.map((item, i) => {
-          let idx = i / 5;
-          const backgroundColor = array[Math.trunc(idx)];
-          console.log(Math.trunc(0.2));
+          const idx = Math.floor(i / 5) % 5;
+          const backgroundColor = array[idx];
           return (
-            <div key={i + Math.random()} style={{ backgroundColor }}>
+            <div
+              key={i + Math.random()}
+              style={{ backgroundColor, margin: "1px 0px" }}
+            >
               First Name: {item.firstName} <br /> Last Name:{item.lastName}
-              <hr />
             </div>
           );
         })}
